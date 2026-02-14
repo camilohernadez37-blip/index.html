@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Jennifer ❤️</title>
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+background:black;
+font-family: 'Georgia', serif;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
+}
+
+/* Universo estrellas */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:blink 2s infinite alternate;
+}
+@keyframes blink{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* Anillo universo */
+.ring{
+position:absolute;
+width:350px;
+height:350px;
+border-radius:50%;
+border:2px solid rgba(255,0,150,0.4);
+animation:rotate 10s linear infinite;
+}
+@keyframes rotate{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* Texto principal */
+h1{
+font-size:50px;
+margin:0;
+z-index:2;
+}
+
+.frase{
+margin-top:20px;
+font-size:22px;
+color:#ff99cc;
+z-index:2;
+}
+
+/* Corazones */
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:float 5s linear infinite;
+}
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+/* Perrito estilo caricatura */
+.dog{
+position:absolute;
+bottom:40px;
+font-size:60px;
+animation:jump 1.5s infinite;
+}
+@keyframes jump{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="ring"></div>
+
+<h1>¡Te amo, Jennifer! 💍</h1>
+<div class="frase" id="frase"></div>
+
+<div class="dog">🐶🤍</div>
+
+<script>
+
+/* Generar estrellas */
+for(let i=0;i<200;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+document.body.appendChild(star);
+}
+
+/* Frases románticas */
+let frases=[
+"Eres mi universo entero 🌌",
+"Contigo quiero todo y para siempre 💍",
+"Eres mi sueño hecho realidad ✨",
+"Mi lugar favorito es a tu lado ❤️",
+"Si el amor tuviera nombre, sería el tuyo 💕",
+"Prometo cuidarte siempre 💖",
+"Eres lo mejor que me ha pasado 💫"
+];
+
+let i=0;
+setInterval(()=>{
+document.getElementById("frase").innerText=frases[i];
+i=(i+1)%frases.length;
+},3000);
+
+/* Corazones */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerText="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},5000);
+},500);
+
+</script>
+
+</body>
+  </html>
